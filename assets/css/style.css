@@ -394,6 +394,17 @@ html {
     transform: translateY(0);
 }
 
+/* Ensure service images are always visible */
+.service-image {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.service-image img {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;

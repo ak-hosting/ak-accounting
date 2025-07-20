@@ -196,6 +196,13 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(el);
         });
         
+        // Add loaded class after a short delay to ensure images are visible
+        setTimeout(() => {
+            animateElements.forEach(el => {
+                el.classList.add('loaded');
+            });
+        }, 100);
+        
         // Trigger animations on scroll
         window.addEventListener('scroll', () => {
             animateElements.forEach(el => {
