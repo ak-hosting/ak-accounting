@@ -1,0 +1,52 @@
+# AK Accounting - Docker Compose
+# Basit kurulum için docker-compose.yml
+
+# AK Accounting - Docker Compose
+# Basit kurulum için docker-compose.yml
+
+services:
+  ak-accounting:
+    build: .
+    container_name: ak-accounting
+    ports:
+      - "8080:80"
+    volumes: []
+      # Geliştirme için volume mount (opsiyonel)
+      # - ./assets:/usr/share/nginx/html/assets:ro
+      # - ./index.html:/usr/share/nginx/html/index.html:ro
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - ak-accounting-network
+
+  # Alternatif: Sadece nginx ile (build olmadan)
+  ak-accounting-simple:
+    image: nginx:alpine
+    container_name: ak-accounting-simple
+    ports:
+      - "8081:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./assets:/usr/share/nginx/html/assets:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      - ak-accounting-network
+
+networks:
+  ak-accounting-network:
+    driver: bridge
+
+# Kullanım:
+# 1. Build ile: docker-compose up -d
+# 2. Sadece nginx: docker-compose up -d ak-accounting-simple
+# 3. Durdurmak: docker-compose down
+# 4. Logları görmek: docker-compose logs -f 

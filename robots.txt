@@ -1,0 +1,28 @@
+# AK Accounting - Robots.txt
+# Arama motorları için yönergeler
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ak-hosting.github.io/ak-accounting/sitemap.xml
+
+# Crawl-delay (opsiyonel)
+Crawl-delay: 1
+
+# Disallow specific files
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /.env
+Disallow: /.gitignore
+Disallow: /Dockerfile
+Disallow: /docker-compose.yml
+Disallow: /nginx.conf
+Disallow: /package.json
+Disallow: /README.md
+Disallow: /CUSTOMIZATION.md
+Disallow: /LICENSE
+
+# Allow important files
+Allow: /index.html
+Allow: /assets/images/ 

@@ -1,0 +1,48 @@
+{
+  "name": "ak-accounting",
+  "version": "1.0.0",
+  "description": "Türkiye'deki muhasebe ve mali müşavirlik ofisleri için ücretsiz web sitesi şablonu",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "build": "echo 'Build completed - static files ready'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linting configured'",
+    "docker:build": "docker build -t ak-accounting .",
+    "docker:run": "docker run -p 8080:80 ak-accounting",
+    "docker:compose": "docker-compose up -d"
+  },
+  "keywords": [
+    "accounting",
+    "mali-müşavirlik",
+    "muhasebe",
+    "türkiye",
+    "bootstrap",
+    "responsive",
+    "template",
+    "website"
+  ],
+  "author": "a.koc <ak@ak-pro.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ak-hosting/ak-accounting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ak-hosting/ak-accounting/issues"
+  },
+  "homepage": "https://ak-hosting.github.io/ak-accounting",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 
