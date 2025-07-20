@@ -420,6 +420,20 @@ html {
     transform: none !important;
 }
 
+/* Force service cards to always be visible */
+.service-card {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Override any fade-in animations for service cards */
+.service-card.fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
