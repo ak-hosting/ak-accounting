@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
         
-        // Observe elements for animation (excluding service cards)
-        const animateElements = document.querySelectorAll('.feature-card, .section-title');
+        // Observe elements for animation (excluding service cards and section titles)
+        const animateElements = document.querySelectorAll('.feature-card');
         animateElements.forEach(el => {
             el.classList.add('loading');
             observer.observe(el);
@@ -199,6 +199,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Service cards should always be visible
         const serviceCards = document.querySelectorAll('.service-card');
         serviceCards.forEach(el => {
+            el.classList.add('loaded');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+        
+        // Section titles should always be visible
+        const sectionTitles = document.querySelectorAll('.section-title');
+        sectionTitles.forEach(el => {
             el.classList.add('loaded');
             el.style.opacity = '1';
             el.style.transform = 'none';

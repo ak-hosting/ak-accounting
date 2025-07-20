@@ -434,6 +434,24 @@ html {
     animation: none !important;
 }
 
+/* Force section titles to always be visible */
+.section-title {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.section-title.loaded {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.section-title.fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
