@@ -394,13 +394,28 @@ html {
     transform: translateY(0);
 }
 
-/* Ensure service images are always visible */
+/* Ensure service images are always visible - Override all animations */
 .service-image {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+.service-image img {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Disable loading animation for service cards */
+.service-card.loading {
     opacity: 1 !important;
     transform: none !important;
 }
 
-.service-image img {
+.service-card.loaded {
     opacity: 1 !important;
     transform: none !important;
 }

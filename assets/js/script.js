@@ -189,21 +189,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
         
-        // Observe elements for animation
-        const animateElements = document.querySelectorAll('.service-card, .feature-card, .section-title');
+        // Observe elements for animation (excluding service cards)
+        const animateElements = document.querySelectorAll('.feature-card, .section-title');
         animateElements.forEach(el => {
             el.classList.add('loading');
             observer.observe(el);
         });
         
-        // Add loaded class after a short delay to ensure images are visible
-        setTimeout(() => {
-            animateElements.forEach(el => {
-                el.classList.add('loaded');
-            });
-        }, 100);
+        // Service cards should always be visible
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(el => {
+            el.classList.add('loaded');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
         
-        // Trigger animations on scroll
+        // Trigger animations on scroll (excluding service cards)
         window.addEventListener('scroll', () => {
             animateElements.forEach(el => {
                 if (isElementInViewport(el) && !el.classList.contains('fade-in-up')) {
