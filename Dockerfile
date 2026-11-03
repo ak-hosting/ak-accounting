@@ -1,35 +1,6 @@
-# AK Accounting - Dockerfile
-# Basierend auf nginx für optimale Performance
-
-FROM nginx:alpine
-
-# Metadaten
-LABEL maintainer="a.koc <ak@ak-pro.com>"
-LABEL description="AK Accounting - Muhasebe ve Mali Müşavirlik Web Sitesi Şablonu"
-LABEL version="1.0.0"
-
-# Arbeitsverzeichnis setzen
-WORKDIR /usr/share/nginx/html
-
-# Nginx-Konfiguration kopieren
+FROM nginx:1.27-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
-
-# Website-Dateien kopieren
-COPY index.html .
-COPY assets/ ./assets/
-COPY README.md .
-COPY LICENSE .
-
-# Berechtigungen setzen
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
-
-# Port 80 exponieren
+COPY index.html impressum.html datenschutz.html robots.txt sitemap.xml /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
 EXPOSE 80
-
-# Nginx starten
-CMD ["nginx", "-g", "daemon off;"]
-
-# Health Check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost/ || exit 1 
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1
